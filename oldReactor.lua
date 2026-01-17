@@ -1,12 +1,10 @@
-local reactor
 local producedEnergy
 local storedEnergy
 local capacity
-local rodLevel
 local fuelUsage
 
 
-function initializeReactor()
+local function initializeReactor()
 	term.clear()    
 	term.setCursorPos(1, 1)	
 	write("Initializing...")
@@ -32,7 +30,7 @@ function initializeReactor()
     return {nil,nil}
 end
 
-function setRods(reactor, level)
+local function setRods(reactor, level)
     if reactor[1] == 'Extreme' then
         return reactor[2].setAllControlRodLevels(level)
     elseif reactor[1] == 'Bigger' then
@@ -40,7 +38,7 @@ function setRods(reactor, level)
     end
 end
 
-function getEnergy(reactor)
+local function getEnergy(reactor)
     if reactor[1] == 'Extreme' then
         return reactor[2].getEnergyStored()
     elseif reactor[1] == 'Bigger' then
@@ -48,7 +46,7 @@ function getEnergy(reactor)
     end
 end
 
-function getCapacity(reactor)
+local function getCapacity(reactor)
     if reactor[1] == 'Extreme' then
         return reactor[2].getEnergyCapacity()
     elseif reactor[1] == 'Bigger' then
@@ -56,7 +54,7 @@ function getCapacity(reactor)
     end
 end
 
-function getFuelUsage(reactor)
+local function getFuelUsage(reactor)
     if reactor[1] == 'Extreme' then
         return reactor[2].getFuelConsumedLastTick()
     elseif reactor[1] == 'Bigger' then
@@ -64,7 +62,7 @@ function getFuelUsage(reactor)
     end
 end
 
-function getRF(reactor)
+local function getRF(reactor)
     if reactor[1] == 'Extreme' then
         return reactor[2].getEnergyProducedLastTick()
     elseif reactor[1] == 'Bigger' then
