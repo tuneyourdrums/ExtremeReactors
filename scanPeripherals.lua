@@ -1,6 +1,7 @@
 local function scanPeripherals()
     local list = peripheral.getNames()
     for _,p in ipairs(list) do
+        term.clear()
         print(p)
         local methods = peripheral.getMethods(p)
         local counter = 0
