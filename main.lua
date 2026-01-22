@@ -55,7 +55,7 @@ end
 local function writeNewLine(key, value)
     write(key)
     local _,y = term.getCursorPos()
-    term.setCursorPos(30,y)
+    term.setCursorPos(20,y)
     write(value)
     term.setCursorPos(1,y+1)
 end
@@ -66,12 +66,16 @@ while true do
 
         local singleTurbineTarget = 1740
         local reactorTarget = singleTurbineTarget * #devices.turbines
+        writeNewLine("Turbine Steam Target: ", singleTurbineTarget)
+        writeNewLine("Reactor Steam Target: ", reactorTarget)
 
         for num, r in ipairs(devices.reactors) do
             r:regulateHotFluid(reactorTarget)
 
-            writeNewLine("Reactor "..num.." Ignots per Day: ",math.floor(r:getFuelUsage()*1728))
-            writeNewLine("Reactor "..num.."Rod Level: ", r:getControlRodLevel(0))
+            writeNewLine("Reactor "..num.." Ignots/Day: ",math.floor(r:getFuelUsage()*1728))
+            writeNewLine("Reactor "..num.." Rod Level: ", r:getControlRodLevel(0))
+            writeNewLine("Reactor "..num.." Rod Level: ", r:getHotFluidProducedLastTick())
+
         end
         
         for num, t in ipairs(devices.turbines) do
