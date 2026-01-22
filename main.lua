@@ -83,7 +83,7 @@ while true do
             t:setFluidFlowRateMax(singleTurbineTarget)
             t:setInductorEngaged(true)
             t:setVentOverflow()
-            writeNewLine("Turbine "..num.." RPM: ",t:getRotorSpeed())
+            writeNewLine("Turbine "..num.." RPM: ",math.floor(t:getRotorSpeed()))
             writeNewLine("Turbine "..num.." Charge %: ",math.floor(t:getEnergyStored()/t:getEnergyCapacity()*100))
             writeNewLine("Turbine "..num.." kFE/t: ",math.floor(t:getEnergyProducedLastTick()/100)/10)
             writeNewLine("","")
