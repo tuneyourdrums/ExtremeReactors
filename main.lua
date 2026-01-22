@@ -63,7 +63,7 @@ while true do
         term.setCursorPos(1, 1)
 
         for num, r in ipairs(devices.reactors) do
-            writeNewLine("Reactor "..num.." Ignots per Day: "..r:getFuelUsage())
+            writeNewLine("Reactor "..num.." Ignots per Day: "..(r:getFuelUsage()*1728))
         end
         
         for num, t in ipairs(devices.turbines) do
