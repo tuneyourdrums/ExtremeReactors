@@ -1,6 +1,6 @@
 local ExtremeReactor = require("ExtremeReactor")
 
-local ExtremeReactor = require("ExtremeReactor")
+local ExtremeTurbine = require("ExtremeTurbine")
 
 local function scanForReactors()
     term.clear()
@@ -26,7 +26,7 @@ local function scanForReactors()
             local ok, assembled = pcall(peripheral.call, name, "mbIsAssembled")
             if ok and assembled then
                 print("ExtremeTurbine found:", name)
-                table.insert(result.turbines, ExtremeReactor.new(name)) -- placeholder class
+                table.insert(result.turbines, ExtremeTurbine.new(name))
             end
         end
     end
@@ -37,13 +37,32 @@ end
 
 local devices = scanForReactors()
 
-if not devices then
-    print("Cannot continue without reactor.")
+if #devices.reactors == 0 or #devices.turbines == 0 then
+    print("No reactors or turbines available.")
     return
 end
 
-devices.reactors[1]:setRods(100)
-print("Energy:", devices.reactors[1]:getEnergy())
-print("Capacity:", devices.reactors[1]:getCapacity())
-print("Fuel usage:", devices.reactors[1]:getFuelUsage())
-print("RF/t:", devices.reactors[1]:getRF())
+
+for _, t in ipairs(devices.turbines) do
+    t:setActive(true)
+end
+
+for _, r in ipairs(devices.reactors) do
+    r:setActive(true)
+    r:setRods(100)
+end
+
+while true do
+        print("Energy:", devices.reactors[1]:getEnergy())
+        print("Capacity:", devices.reactors[1]:getCapacity())
+        print("Fuel usage:", devices.reactors[1]:getFuelUsage())
+        print("RF/t:", devices.reactors[1]:getRF())
+
+        devices.turbines[1]:setFluidFlowRateMax(2000)
+        devices.turbines[1]:setInductorEngaged(true)
+        devices.turbines[1]:setVentOverflow()
+
+        print("Turbine Capacity:", devices.turbines[1]:getEnergyCapacity())
+        print("RF/t:", devices.turbines[1]:getEnergyProducedLastTick())
+    sleep(5)
+end

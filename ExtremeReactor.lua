@@ -14,6 +14,10 @@ function ExtremeReactor.new(name)
     return setmetatable(self, ExtremeReactor)
 end
 
+function ExtremeReactor:setActive(state)
+    return self.peripheral.setActive(state)
+end
+
 function ExtremeReactor:setRods(level)
     return self.peripheral.setAllControlRodLevels(level)
 end

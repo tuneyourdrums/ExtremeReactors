@@ -1,7 +1,7 @@
 local files = {
   "scanPeripherals.lua",
   "ExtremeReactor.lua",
-  "main",
+  "main.lua",
   "ExtremeTurbine.lua",
 }
 
