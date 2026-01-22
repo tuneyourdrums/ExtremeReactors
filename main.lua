@@ -63,16 +63,15 @@ while true do
         term.setCursorPos(1, 1)
 
         for num, r in ipairs(devices.reactors) do
-            writeNewLine("Fuel usage:", r:getFuelUsage())
-            
+            writeNewLine("Reactor "..num.." Ignots per Day: "..r:getFuelUsage())
         end
         
         for num, t in ipairs(devices.turbines) do
             t:setFluidFlowRateMax(1740)
             t:setInductorEngaged(true)
             t:setVentOverflow()
-            writeNewLine("Turbine"..num.."Capacity: "..t:getEnergyCapacity())
-            writeNewLine("RF/t"..num..": "..t:getEnergyProducedLastTick())
+            writeNewLine("Turbine "..num.." Capacity: "..t:getEnergyCapacity())
+            writeNewLine("Turbine "..num.." RF/t: "..t:getEnergyProducedLastTick())
         end
     sleep(1)
 end
