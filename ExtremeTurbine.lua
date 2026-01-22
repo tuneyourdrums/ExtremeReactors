@@ -1,7 +1,6 @@
 local ExtremeTurbine = {}
 ExtremeTurbine.__index = ExtremeTurbine
 
--- Constructor
 function ExtremeTurbine.new(name)
     local wrapped = peripheral.wrap(name)
     assert(wrapped, "Failed to wrap peripheral: " .. tostring(name))
@@ -11,7 +10,6 @@ function ExtremeTurbine.new(name)
     self.name = name
     self.peripheral = wrapped
 
-    -- cached/static data
     self.capacity = wrapped.getEnergyCapacity()
 
     return self

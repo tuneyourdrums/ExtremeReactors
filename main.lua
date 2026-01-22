@@ -49,20 +49,23 @@ end
 
 for _, r in ipairs(devices.reactors) do
     r:setActive(true)
-    r:setRods(100)
+    r:setRods(50)
 end
 
 while true do
-        print("Energy:", devices.reactors[1]:getEnergy())
-        print("Capacity:", devices.reactors[1]:getCapacity())
-        print("Fuel usage:", devices.reactors[1]:getFuelUsage())
-        print("RF/t:", devices.reactors[1]:getRF())
+        term.clear()
 
-        devices.turbines[1]:setFluidFlowRateMax(2000)
-        devices.turbines[1]:setInductorEngaged(true)
-        devices.turbines[1]:setVentOverflow()
 
-        print("Turbine Capacity:", devices.turbines[1]:getEnergyCapacity())
-        print("RF/t:", devices.turbines[1]:getEnergyProducedLastTick())
+        for num, r in ipairs(devices.reactors) do
+            print("Fuel usage:", r:getFuelUsage())
+        end
+        
+        for num, t in ipairs(devices.turbines) do
+            t:setFluidFlowRateMax(1740)
+            t:setInductorEngaged(true)
+            t:setVentOverflow()
+            print("Turbine ", num, " Capacity: ", t:getEnergyCapacity())
+            print("RF/t: ", num, " Capacity: ", t:getEnergyProducedLastTick())
+        end
     sleep(5)
 end
