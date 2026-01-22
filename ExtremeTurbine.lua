@@ -44,4 +44,8 @@ function ExtremeTurbine:getEnergyProducedLastTick()
     return self.peripheral.getEnergyProducedLastTick()
 end
 
+function ExtremeTurbine:getRotorSpeed()
+    return self.peripheral.getRotorSpeed()
+end
+
 return ExtremeTurbine
