@@ -39,15 +39,15 @@ local function scanForReactors()
 end
 
 
-local reactor = scanForReactors()
+local devices = scanForReactors()
 
-if not reactor then
+if not devices then
     print("Cannot continue without reactor.")
     return
 end
 
-reactor:setRods(100)
-print("Energy:", reactor:getEnergy())
-print("Capacity:", reactor:getCapacity())
-print("Fuel usage:", reactor:getFuelUsage())
-print("RF/t:", reactor:getRF())
+devices.reactors[1]:setRods(100)
+print("Energy:", devices.reactors[1]:getEnergy())
+print("Capacity:", devices.reactors[1]:getCapacity())
+print("Fuel usage:", devices.reactors[1]:getFuelUsage())
+print("RF/t:", devices.reactors[1]:getRF())
