@@ -3,6 +3,7 @@ local files = {
   "ExtremeReactor.lua",
   "main.lua",
   "ExtremeTurbine.lua",
+  "startup"
 }
 
 local base =
