@@ -23,7 +23,7 @@ local function scanForReactors()
         elseif pType and string.find(pType, "BigReactor-Turbine") then
             if peripheral.call(name, "mbIsAssembled") == true then
                 print("ExtremeTurbine found:", name)
-                table.insert(result.reactors, ExtremeReactor.new(name))
+                table.insert(result.turbines, ExtremeReactor.new(name))
             end
         end
     end
