@@ -15,24 +15,20 @@ local function scanForReactors()
     for _, name in ipairs(peripheral.getNames()) do
         local pType = peripheral.getType(name)
 
-        if pType and string.find(pType, "BigReactors-Reactor") then
-            if peripheral.call(name, "mbIsAssembled") == true then
+        if pType == "BigReactors-Reactor" then
+            local ok, assembled = pcall(peripheral.call, name, "mbIsAssembled")
+            if ok and assembled then
                 print("ExtremeReactor found:", name)
                 table.insert(result.reactors, ExtremeReactor.new(name))
             end
-        elseif pType and string.find(pType, "BigReactors-Turbine") then
-            if peripheral.call(name, "mbIsAssembled") == true then
+
+        elseif pType == "BigReactors-Turbine" then
+            local ok, assembled = pcall(peripheral.call, name, "mbIsAssembled")
+            if ok and assembled then
                 print("ExtremeTurbine found:", name)
-                table.insert(result.turbines, ExtremeReactor.new(name))
+                table.insert(result.turbines, ExtremeReactor.new(name)) -- placeholder class
             end
         end
-    end
-
-    if #result.reactors == 0 then
-        print("No reactors found.")
-    end
-    if #result.turbines == 0 then
-        print("No turbines found.")
     end
 
     return result
