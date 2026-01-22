@@ -42,13 +42,17 @@ function ExtremeReactor:getHotFluidProducedLastTick()
     return self.peripheral.getHotFluidProducedLastTick()
 end
 
+function ExtremeReactor:getControlRodLevel(num)
+    return self.peripheral.getControlRodLevel(num)
+end
+
 function ExtremeReactor:regulateHotFluid(target)
     local deadband = 50
 
     local produced = self:getHotFluidProducedLastTick()
     local error = target - produced
 
-    local rods = self.peripheral.getControlRodLevel(0)
+    local rods = self:getControlRodLevel(0)
 
     -- deadband: no change
     if math.abs(error) <= deadband then

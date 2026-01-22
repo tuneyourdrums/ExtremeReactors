@@ -64,12 +64,18 @@ while true do
         term.clear()
         term.setCursorPos(1, 1)
 
+        local singleTurbineTarget = 1740
+        local reactorTarget = singleTurbineTarget * #devices.turbines
+
         for num, r in ipairs(devices.reactors) do
+            r:regulateHotFluid(reactorTarget)
+
             writeNewLine("Reactor "..num.." Ignots per Day: ",math.floor(r:getFuelUsage()*1728))
+            writeNewLine("Reactor "..num.."Rod Level: ", r:getControlRodLevel(0))
         end
         
         for num, t in ipairs(devices.turbines) do
-            t:setFluidFlowRateMax(1740)
+            t:setFluidFlowRateMax(singleTurbineTarget)
             t:setInductorEngaged(true)
             t:setVentOverflow()
             writeNewLine("Turbine "..num.." Charge %: ",math.floor(t:getEnergyStored()/t:getEnergyCapacity()*100))
