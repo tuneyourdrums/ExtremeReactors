@@ -52,9 +52,11 @@ for _, r in ipairs(devices.reactors) do
     r:setRods(50)
 end
 
-local function writeNewLine(string)
-    write(string)
+local function writeNewLine(key, value)
+    write(key)
     local _,y = term.getCursorPos()
+    term.setCursorPos(30,y)
+    write(value)
     term.setCursorPos(1,y+1)
 end
 
@@ -63,15 +65,15 @@ while true do
         term.setCursorPos(1, 1)
 
         for num, r in ipairs(devices.reactors) do
-            writeNewLine("Reactor "..num.." Ignots per Day: "..(r:getFuelUsage()*1728))
+            writeNewLine("Reactor "..num.." Ignots per Day: ",math.floor(r:getFuelUsage()*1728))
         end
         
         for num, t in ipairs(devices.turbines) do
             t:setFluidFlowRateMax(1740)
             t:setInductorEngaged(true)
             t:setVentOverflow()
-            writeNewLine("Turbine "..num.." Capacity: "..t:getEnergyCapacity())
-            writeNewLine("Turbine "..num.." RF/t: "..t:getEnergyProducedLastTick())
+            writeNewLine("Turbine "..num.." Charge %: ",math.floor(t:getEnergyStored()/t:getEnergyCapacity()))
+            writeNewLine("Turbine "..num.." RF/t: ",t:getEnergyProducedLastTick())
         end
     sleep(1)
 end

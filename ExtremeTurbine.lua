@@ -36,6 +36,10 @@ function ExtremeTurbine:getEnergyCapacity()
     return self.capacity
 end
 
+function ExtremeTurbine:getEnergyStored()
+    return self.peripheral.getEnergyStored()
+end
+
 function ExtremeTurbine:getEnergyProducedLastTick()
     return self.peripheral.getEnergyProducedLastTick()
 end
