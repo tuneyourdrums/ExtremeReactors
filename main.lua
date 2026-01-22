@@ -54,7 +54,7 @@ end
 
 while true do
         term.clear()
-
+        term.setCursorPos(1, 1)
 
         for num, r in ipairs(devices.reactors) do
             print("Fuel usage:", r:getFuelUsage())
@@ -64,8 +64,8 @@ while true do
             t:setFluidFlowRateMax(1740)
             t:setInductorEngaged(true)
             t:setVentOverflow()
-            print("Turbine ", num, " Capacity: ", t:getEnergyCapacity())
-            print("RF/t: ", num, " Capacity: ", t:getEnergyProducedLastTick())
+            print("Turbine", num, "Capacity: ", t:getEnergyCapacity())
+            print("RF/t", num, ": ", t:getEnergyProducedLastTick())
         end
-    sleep(5)
+    sleep(1)
 end
