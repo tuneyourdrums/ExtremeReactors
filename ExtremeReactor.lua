@@ -54,7 +54,6 @@ function ExtremeReactor:regulateHotFluid(target)
 
     local rods = self:getControlRodLevel(0)
 
-    -- deadband: no change
     if math.abs(error) <= deadband then
         return {
             target = target,
@@ -64,26 +63,22 @@ function ExtremeReactor:regulateHotFluid(target)
         }
     end
 
-    -- dynamic step size based on error magnitude
     local step = math.floor(math.abs(error) / 200)
     if step < 1 then step = 1 end
     if step > 10 then step = 10 end
 
-    -- inverted control:
-    -- need more fluid -> LOWER rods
-    -- need less fluid -> RAISE rods
     if error > 0 then
         rods = rods - step
     else
         rods = rods + step
     end
 
-    -- clamp safely
     if rods < 0 then rods = 0 end
     if rods > 100 then rods = 100 end
 
-    -- apply only when outside deadband
-    self.peripheral.setAllControlRodLevels(rods)
+    if rods ~= self:getControlRodLevel(0) then
+        self.peripheral.setAllControlRodLevels(rods)
+    end
 
     return {
         target = target,
