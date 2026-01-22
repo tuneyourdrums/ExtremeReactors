@@ -68,6 +68,7 @@ while true do
         local reactorTarget = singleTurbineTarget * #devices.turbines
         writeNewLine("Turbine Steam Target: ", singleTurbineTarget)
         writeNewLine("Reactor Steam Target: ", reactorTarget)
+        writeNewLine("","")
 
         for num, r in ipairs(devices.reactors) do
             r:regulateHotFluid(reactorTarget)
@@ -75,15 +76,16 @@ while true do
             writeNewLine("Reactor "..num.." Ignots/Day: ",math.floor(r:getFuelUsage()*1728))
             writeNewLine("Reactor "..num.." Rod Level: ", r:getControlRodLevel(0))
             writeNewLine("Reactor "..num.." Rod Level: ", r:getHotFluidProducedLastTick())
-
+            writeNewLine("","")
         end
-        
+        writeNewLine("","")
         for num, t in ipairs(devices.turbines) do
             t:setFluidFlowRateMax(singleTurbineTarget)
             t:setInductorEngaged(true)
             t:setVentOverflow()
             writeNewLine("Turbine "..num.." Charge %: ",math.floor(t:getEnergyStored()/t:getEnergyCapacity()*100))
             writeNewLine("Turbine "..num.." kFE/t: ",math.floor(t:getEnergyProducedLastTick()/100)/10)
+            writeNewLine("","")
         end
     sleep(1)
 end
