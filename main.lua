@@ -7,6 +7,8 @@ local function scanForReactors()
 
     for _, name in ipairs(peripheral.getNames()) do
         local pType = peripheral.getType(name)
+        local reactors = {}
+        local turbines = {}
         if pType and string.find(pType, "Reactor") then
             if peripheral.call(name, "mbIsAssembled") == true then
                 print("ExtremeReactor found!")

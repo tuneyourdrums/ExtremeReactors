@@ -1,4 +1,4 @@
---[[
+
 local function scanPeripherals()
     local list = peripheral.getNames()
     for _,p in ipairs(list) do
@@ -20,25 +20,6 @@ local function scanPeripherals()
 end
 
 return scanPeripherals()
-
-]]
-local function scanPeripherals()
-    term.clear()
-    local list = peripheral.getNames()
-    for _,p in ipairs(list) do
-        local methods = peripheral.getMethods(p)
-        for _,m in ipairs(methods) do
-            print(m)
-            counter = counter + 1
-            if counter >= 15 then
-                sleep(15)
-                counter = 0
-                term.clear()
-                print(p)
-            end
-        end
-    end
-end
 
 
 --[[
