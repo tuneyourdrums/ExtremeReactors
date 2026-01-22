@@ -55,7 +55,7 @@ end
 local function writeNewLine(key, value)
     write(key)
     local _,y = term.getCursorPos()
-    term.setCursorPos(20,y)
+    term.setCursorPos(25,y)
     write(value)
     term.setCursorPos(1,y+1)
 end
