@@ -25,12 +25,18 @@ function display.printRow(...)
     local cursorY = args[2]
     local columnBreak = " | "
 
+    term.setCursorPos(cursorX, cursorY)
+
     for i = 3, #args-2, 2 do
-        term.setCursorPos(cursorX, cursorY)
+        local text = args[i]
+        local width = args[i+2]
+        
+        if #text < width then
+            text = text .. string.rep(" ", width - #text)
+        end
+        
         write(args[i])
-        cursorX = cursorX + args[i+1] - #args[i]
         write(columnBreak)
-        cursorX = cursorX + #args[i]
     end
 
     term.setCursorPos(1, cursorY+1)
