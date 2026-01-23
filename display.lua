@@ -37,6 +37,7 @@ function display.printRow(...)
         write(columnBreak)
     end
 
+    local _,cursorY = term.getCursorPos()
     term.setCursorPos(1, cursorY+1)
 end
 
