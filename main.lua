@@ -67,7 +67,7 @@ while true do
         local _,cursorY = term.getCursorPos()
         local columnWidths = 10
         display.printRow(
-                1, cursorY, columnWidths
+                1, cursorY, columnWidths,
                 "Reactor #",
                 "Ignots/Day",
                 "Rod Level",
