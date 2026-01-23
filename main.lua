@@ -74,6 +74,7 @@ while true do
                 "Steam mB/t", columnWidths[4]
             )
         
+        _,cursorY = term.getCursorPos()
         for num, r in ipairs(devices.reactors) do
 
             r:regulateHotFluid(reactorTarget)
@@ -83,7 +84,7 @@ while true do
             local currentSteamProduction = r:getHotFluidProducedLastTick()
 
             display.printRow(
-                1, term.getCursorPos(),
+                1, cursorY,
                 num, columnWidths[1],
                 ingotsPerDay, columnWidths[2],
                 currentRodLevel, columnWidths[3],
