@@ -96,7 +96,7 @@ while true do
         display.writeNewLine("","")
 
         display.printRow(
-                columnWidths, colors.green,
+                columnWidths, colors.lightGray,
                 "Turbine #",
                 "RPM",
                 "Charge",
