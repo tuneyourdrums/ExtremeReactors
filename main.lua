@@ -106,6 +106,8 @@ while true do
                 "kFE/t"
             )
 
+        _,cursorY = term.getCursorPos()
+        
         for num, t in ipairs(devices.turbines) do
             t:setFluidFlowRateMax(singleTurbineTarget)
             t:setInductorEngaged(true)
