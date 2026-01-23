@@ -67,7 +67,7 @@ while true do
         local columnWidths = 10
 
         display.printRow(
-                columnWidths, colors.green,
+                columnWidths, colors.lightGray,
                 "Reactor #",
                 "Ignots/Day",
                 "Rod Level",

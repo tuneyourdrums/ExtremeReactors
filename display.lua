@@ -22,7 +22,6 @@ function display.printRow(...)
     
     local columnWidth = args[1]
     local textColor = args[2]
-    print(textColor)
     local columnBreak = " | "
 
     for i = 3, #args, 1 do
@@ -38,7 +37,7 @@ function display.printRow(...)
         term.setTextColor(colors.white)
 
         if i+1 > #args then break end
-        term.setTextColor(colors.lightGray)
+        term.setTextColor(colors.gray)
         write(columnBreak)
         term.setTextColor(colors.white)
     end
