@@ -1,4 +1,6 @@
-local function writeNewLine(key, value)
+local display = {}
+
+function display.writeNewLine(key, value)
     write(key)
     local _,y = term.getCursorPos()
     term.setCursorPos(25,y)
@@ -6,7 +8,7 @@ local function writeNewLine(key, value)
     term.setCursorPos(1,y+1)
 end
 
-local function printRow(...)
+function display.printRow(...)
     local args = {...}
 
     --[[ args:
@@ -32,9 +34,11 @@ local function printRow(...)
     term.setCursorPos(1, cursorY+1)
 end
 
-local function printTableStats(...)
+function display.printTableStats(...)
     local args = {...}
     
 
 
 end
+
+return display

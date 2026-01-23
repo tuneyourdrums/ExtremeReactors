@@ -1,6 +1,6 @@
 local ExtremeReactor = require("ExtremeReactor")
 local ExtremeTurbine = require("ExtremeTurbine")
-local display = require("display.lua")
+local display = require("display")
 
 local function scanForReactors()
     term.clear()
@@ -93,7 +93,7 @@ while true do
         end
 
         display.writeNewLine("","")
-        
+
         for num, t in ipairs(devices.turbines) do
             t:setFluidFlowRateMax(singleTurbineTarget)
             t:setInductorEngaged(true)
