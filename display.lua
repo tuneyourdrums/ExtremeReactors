@@ -29,8 +29,8 @@ function display.printRow(...)
 
     for i = 3, #args-2, 2 do
         local text = args[i]
-        local width = args[i+2]
-        
+        local width = args[i+1]
+
         if #text < width then
             text = text .. string.rep(" ", width - #text)
         end
