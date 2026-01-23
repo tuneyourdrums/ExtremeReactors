@@ -96,14 +96,32 @@ while true do
 
         display.writeNewLine("","")
 
+        _,cursorY = term.getCursorPos()
+        columnWidths = 10
+        display.printRow(
+                1, cursorY, columnWidths,
+                "Turbine #",
+                "RPM",
+                "Charge",
+                "kFE/t"
+            )
+
         for num, t in ipairs(devices.turbines) do
             t:setFluidFlowRateMax(singleTurbineTarget)
             t:setInductorEngaged(true)
             t:setVentOverflow()
-            display.writeNewLine("Turbine "..num.." RPM: ",math.floor(t:getRotorSpeed()))
-            display.writeNewLine("Turbine "..num.." Charge %: ",math.floor(t:getEnergyStored()/t:getEnergyCapacity()*100))
-            display.writeNewLine("Turbine "..num.." kFE/t: ",math.floor(t:getEnergyProducedLastTick()/100)/10)
-            display.writeNewLine("","")
+
+            local currentRPM = math.floor(t:getRotorSpeed())
+            local currentCharge = math.floor(t:getEnergyStored()/t:getEnergyCapacity()*100)
+            local currentKFEperTick = math.floor(t:getEnergyProducedLastTick()/100)/10
+
+            display.printRow(
+                1, cursorY, columnWidths,
+                num,
+                currentRPM,
+                currentCharge,
+                currentKFEperTick
+            )
         end
     sleep(1)
 end
