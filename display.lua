@@ -30,11 +30,11 @@ function display.printRow(...)
             text = text .. string.rep(" ", columnWidth - #text)
         end
         
-        write(text)
+        term.blit(text,"0","f")
 
         if i+1 > #args then break end
 
-        write(columnBreak)
+        term.blit(columnBreak, "8", "f")
     end
 
     local _,cursorY = term.getCursorPos()
