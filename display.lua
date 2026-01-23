@@ -28,7 +28,7 @@ function display.printRow(...)
 
     term.setCursorPos(cursorX, cursorY)
 
-    for i = 4, #args-3, 1 do
+    for i = 4, #args, 1 do
 
         local text = tostring(args[i])
 
