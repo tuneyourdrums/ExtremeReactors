@@ -37,6 +37,9 @@ function display.printRow(...)
         end
         
         write(text)
+
+        if i+1 > #args then break end
+        
         write(columnBreak)
     end
 
