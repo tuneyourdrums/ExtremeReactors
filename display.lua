@@ -14,26 +14,26 @@ function display.printRow(...)
     --[[ args:
             1: cursor starting X
             2: cursor sarting Y
-            3: column 1 text
-            4: column 1 width
+            3: column width
+            4: column 1 text
             5: column 2 text
-            6: column 2 width
+            6: column 3 text
             etc...
     ]]
     
     local cursorX = args[1]
     local cursorY = args[2]
+    local columnWidth = args[3]
     local columnBreak = " | "
 
     term.setCursorPos(cursorX, cursorY)
 
-    for i = 3, #args-2, 2 do
+    for i = 4, #args-3, 1 do
 
         local text = tostring(args[i])
-        local width = tonumber(args[i+1])
 
-        if #text < width then
-            text = text .. string.rep(" ", width - #text)
+        if #text < columnWidth then
+            text = text .. string.rep(" ", columnWidth - #text)
         end
         
         write(text)

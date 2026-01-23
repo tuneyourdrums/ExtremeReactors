@@ -65,16 +65,17 @@ while true do
         display.writeNewLine("","")
 
         local _,cursorY = term.getCursorPos()
-        local columnWidths = {10,10,10,10}
+        local columnWidths = 10
         display.printRow(
-                1, cursorY,
-                "Reactor #", columnWidths[1],
-                "Ignots/Day", columnWidths[2],
-                "Rod Level", columnWidths[3],
-                "Steam mB/t", columnWidths[4]
+                1, cursorY, columnWidths
+                "Reactor #",
+                "Ignots/Day",
+                "Rod Level",
+                "Steam mB/t"
             )
         
         _,cursorY = term.getCursorPos()
+
         for num, r in ipairs(devices.reactors) do
 
             r:regulateHotFluid(reactorTarget)
@@ -84,11 +85,11 @@ while true do
             local currentSteamProduction = r:getHotFluidProducedLastTick()
 
             display.printRow(
-                1, cursorY,
-                num, columnWidths[1],
-                ingotsPerDay, columnWidths[2],
-                currentRodLevel, columnWidths[3],
-                currentSteamProduction, columnWidths[4]
+                1, cursorY, columnWidths,
+                num,
+                ingotsPerDay,
+                currentRodLevel,
+                currentSteamProduction
             )
 
         end
