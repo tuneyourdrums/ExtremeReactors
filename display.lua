@@ -28,8 +28,9 @@ function display.printRow(...)
     term.setCursorPos(cursorX, cursorY)
 
     for i = 3, #args-2, 2 do
+
         local text = tostring(args[i])
-        local width = args[i+1]
+        local width = tonumber(args[i+1])
 
         if #text < width then
             text = text .. string.rep(" ", width - #text)
