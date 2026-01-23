@@ -13,28 +13,33 @@ function display.printRow(...)
 
     --[[ args:
             1: column width
-            2: column 1 text
-            3: column 2 text
-            n: column n-1 text
+            2: text color
+            3: column 1 text
+            4: column 2 text
+            n: column n-2 text
             etc...
     ]]
     
     local columnWidth = args[1]
+    local textColor = args[2]
     local columnBreak = " | "
 
-    for i = 2, #args, 1 do
+    for i = 3, #args, 1 do
 
         local text = tostring(args[i])
 
         if #text < columnWidth then
             text = text .. string.rep(" ", columnWidth - #text)
         end
-        
-        term.blit(text,"0","f")
+
+        term.setTextColor(textColor)
+        write(text)
+        term.setTextColor(colors.white)
 
         if i+1 > #args then break end
-
-        term.blit(columnBreak, "8", "f")
+        term.setTextColor(colors.lightGray)
+        write(columnBreak)
+        term.setTextColor(colors.white)
     end
 
     local _,cursorY = term.getCursorPos()

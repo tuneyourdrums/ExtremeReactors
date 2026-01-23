@@ -67,7 +67,7 @@ while true do
         local columnWidths = 10
 
         display.printRow(
-                columnWidths,
+                columnWidths, colors.green,
                 "Reactor #",
                 "Ignots/Day",
                 "Rod Level",
@@ -84,7 +84,7 @@ while true do
             local currentSteamProduction = r:getHotFluidProducedLastTick()
 
             display.printRow(
-                columnWidths,
+                columnWidths, colors.white,
                 num,
                 ingotsPerDay,
                 currentRodLevel,
@@ -96,7 +96,7 @@ while true do
         display.writeNewLine("","")
 
         display.printRow(
-                columnWidths,
+                columnWidths, colors.green,
                 "Turbine #",
                 "RPM",
                 "Charge",
@@ -114,7 +114,7 @@ while true do
             local currentKFEperTick = math.floor(t:getEnergyProducedLastTick()/100)/10
 
             display.printRow(
-                columnWidths,
+                columnWidths, colors.white,
                 num,
                 currentRPM,
                 currentCharge,
