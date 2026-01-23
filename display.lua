@@ -27,8 +27,10 @@ function display.printRow(...)
 
     for i = 3, #args-2, 2 do
         term.setCursorPos(cursorX, cursorY)
-        write(args[i]..columnBreak)
-        cursorX = cursorX + args[i+1] + #columnBreak
+        write(args[i])
+        cursorX = cursorX + args[i+1] - #args[i]
+        write(columnBreak)
+        cursorX = cursorX + #args[i]
     end
 
     term.setCursorPos(1, cursorY+1)
