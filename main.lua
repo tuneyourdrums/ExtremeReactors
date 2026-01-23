@@ -65,9 +65,9 @@ while true do
         display.writeNewLine("","")
 
         local _,cursorY = term.getCursorPos()
-        local columnWidths = {9,10,9,10}
+        local columnWidths = {10,10,10,10}
         display.printRow(
-                1, term.getCursorPos(),
+                4, cursorY,
                 "Reactor #", columnWidths[1],
                 "Ignots/Day", columnWidths[2],
                 "Rod Level", columnWidths[3],
