@@ -64,17 +64,16 @@ while true do
         display.writeNewLine("Reactor Steam Target: ", reactorTarget)
         display.writeNewLine("","")
 
-        local _,cursorY = term.getCursorPos()
         local columnWidths = 10
+
         display.printRow(
-                1, cursorY, columnWidths,
+                columnWidths,
                 "Reactor #",
                 "Ignots/Day",
                 "Rod Level",
                 "Steam mB/t"
             )
         
-        _,cursorY = term.getCursorPos()
 
         for num, r in ipairs(devices.reactors) do
 
@@ -85,7 +84,7 @@ while true do
             local currentSteamProduction = r:getHotFluidProducedLastTick()
 
             display.printRow(
-                1, cursorY, columnWidths,
+                columnWidths,
                 num,
                 ingotsPerDay,
                 currentRodLevel,
@@ -96,18 +95,15 @@ while true do
 
         display.writeNewLine("","")
 
-        _,cursorY = term.getCursorPos()
-        columnWidths = 10
         display.printRow(
-                1, cursorY, columnWidths,
+                columnWidths,
                 "Turbine #",
                 "RPM",
                 "Charge",
                 "kFE/t"
-            )
+        )
 
-        _,cursorY = term.getCursorPos()
-        
+
         for num, t in ipairs(devices.turbines) do
             t:setFluidFlowRateMax(singleTurbineTarget)
             t:setInductorEngaged(true)
@@ -118,7 +114,7 @@ while true do
             local currentKFEperTick = math.floor(t:getEnergyProducedLastTick()/100)/10
 
             display.printRow(
-                1, cursorY, columnWidths,
+                columnWidths,
                 num,
                 currentRPM,
                 currentCharge,
