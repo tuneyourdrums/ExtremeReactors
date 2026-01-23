@@ -22,6 +22,7 @@ function display.printRow(...)
     
     local columnWidth = args[1]
     local textColor = args[2]
+    print(textColor)
     local columnBreak = " | "
 
     for i = 3, #args, 1 do

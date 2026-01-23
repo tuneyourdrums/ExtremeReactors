@@ -49,7 +49,7 @@ end
 
 for _, r in ipairs(devices.reactors) do
     r:setActive(true)
-    r:setRods(50)
+    r:setRods(100)
 end
 
 
