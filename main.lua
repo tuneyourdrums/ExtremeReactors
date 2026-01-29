@@ -59,7 +59,7 @@ while true do
         term.setCursorPos(1, 1)
 
         local singleTurbineTarget = 1740
-        local reactorTarget = (singleTurbineTarget+ 50) * #devices.turbines
+        local reactorTarget = (singleTurbineTarget + 300) * #devices.turbines
         display.writeNewLine("Turbine Steam Target: ", singleTurbineTarget)
         display.writeNewLine("Reactor Steam Target: ", reactorTarget)
         display.writeNewLine("","")

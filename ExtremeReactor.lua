@@ -93,7 +93,7 @@ function ExtremeReactor:regulateHotFluidCapacity(target)
 end
 
 function ExtremeReactor:regulateHotFluid(target, turbines)
-    local deadband = 50
+    local deadband = 100
 
     local produced = self:getHotFluidProducedLastTick()
     local error = target - produced
@@ -121,6 +121,7 @@ function ExtremeReactor:regulateHotFluid(target, turbines)
 
     if rods < 0 then rods = 0 end
     if rods > 100 then rods = 100 end
+    if (self:getHotFluidAmount()/self:getHotFluidAmountMax()) > 0.95 then rods = 100 end
 
     if rods ~= self:getControlRodLevel(0) then
         self.peripheral.setAllControlRodLevels(rods)
