@@ -58,10 +58,10 @@ while true do
         term.clear()
         term.setCursorPos(1, 1)
 
-        local singleTurbineTarget = 1740
-        local reactorTarget = singleTurbineTarget * #devices.turbines
-        display.writeNewLine("Turbine Steam Target: ", singleTurbineTarget)
-        display.writeNewLine("Reactor Steam Target: ", reactorTarget)
+        --local singleTurbineTarget = 1740
+        --local reactorTarget = singleTurbineTarget * #devices.turbines
+        --display.writeNewLine("Turbine Steam Target: ", singleTurbineTarget)
+        --display.writeNewLine("Reactor Steam Target: ", reactorTarget)
         display.writeNewLine("","")
 
         local columnWidths = 10
@@ -77,7 +77,9 @@ while true do
 
         for num, r in ipairs(devices.reactors) do
 
-            r:regulateHotFluid(reactorTarget)
+            --r:regulateHotFluidCapacity(reactorTarget)
+
+            r:regulateHotFluidCapacity(0.5)
 
             local ingotsPerDay = math.floor(r:getFuelUsage()*1728)
             local currentRodLevel = r:getControlRodLevel(0)
