@@ -77,7 +77,7 @@ while true do
 
         for num, r in ipairs(devices.reactors) do
 
-            --r:regulateHotFluidCapacity(reactorTarget)
+            --r:regulateHotFluid(reactorTarget)
 
             r:regulateHotFluidCapacity(0.5)
 

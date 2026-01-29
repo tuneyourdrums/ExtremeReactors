@@ -61,14 +61,17 @@ function ExtremeReactor:regulateHotFluidCapacity(target)
     local tankCapacity = self:getHotFluidAmountMax()
     local tankFillCurrent = self:getHotFluidAmount()
     local tankFillPercent = tankFillCurrent/tankCapacity
+    print(tankFillPercent)
     
     local error = target - tankFillPercent
+    print(error)
 
     if math.abs(error) <= deadband then return true end
 
     local rods = self:getControlRodLevel(0)
     
     local step = math.abs(error) * 5
+    print(step)
 
     if step < 0 then step = 0 end
     if step > 5 then step = 5 end
@@ -82,6 +85,7 @@ function ExtremeReactor:regulateHotFluidCapacity(target)
     if rods < 0 then rods = 0 end
     if rods > 100 then rods = 100 end
 
+    print(step)
     if rods ~= self:getControlRodLevel(0) then
         self.peripheral.setAllControlRodLevels(rods)
     end
