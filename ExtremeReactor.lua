@@ -92,7 +92,7 @@ function ExtremeReactor:regulateHotFluidCapacity(target)
 
 end
 
-function ExtremeReactor:regulateHotFluid(target)
+function ExtremeReactor:regulateHotFluid(target, turbines)
     local deadband = 50
 
     local produced = self:getHotFluidProducedLastTick()
@@ -109,7 +109,7 @@ function ExtremeReactor:regulateHotFluid(target)
         }
     end
 
-    local step = math.floor(math.abs(error) / 200)
+    local step = math.floor(math.abs(error) / (200 * turbines))
     if step < 1 then step = 1 end
     if step > 10 then step = 10 end
 
