@@ -68,7 +68,10 @@ function ExtremeReactor:regulateHotFluidCapacity(target)
 
     local rods = self:getControlRodLevel(0)
     
-    local step = math.abs(error) * 20
+    local step = math.abs(error) * 5
+
+    if step < 0 then step = 0 end
+    if step > 5 then step = 5 end
 
     if error > 0 then
         rods = rods - step
