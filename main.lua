@@ -58,7 +58,7 @@ while true do
         term.clear()
         term.setCursorPos(1, 1)
 
-        --local singleTurbineTarget = 1740
+        local singleTurbineTarget = 1740
         --local reactorTarget = singleTurbineTarget * #devices.turbines
         --display.writeNewLine("Turbine Steam Target: ", singleTurbineTarget)
         --display.writeNewLine("Reactor Steam Target: ", reactorTarget)
